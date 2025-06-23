@@ -1,0 +1,26 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.db
+*.sqlite3
+
+# Virtual Environment
+venv/
+env/
+__pypackages__
+
+# Logs
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Artifacts
+.DS_Store
+Thumbs.db
