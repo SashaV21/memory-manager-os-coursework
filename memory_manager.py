@@ -39,7 +39,6 @@ class MemoryManager:
         log_defragmentation()
 
     def get_memory_state(self):
-        """Возвращает текущее состояние памяти в виде списка словарей"""
         return [
             {
                 'start': block.start,
