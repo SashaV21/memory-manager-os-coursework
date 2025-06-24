@@ -51,10 +51,11 @@ class MemoryManager:
 
     def count_fragmentation(self):
         free_blocks = [block for block in self.memory_blocks if block.is_free]
-        if len(free_blocks) <= 1:
+        if not free_blocks:
             return 0
         total_free = sum(block.size for block in free_blocks)
         largest_free = max(block.size for block in free_blocks)
-        # Формула: (наибольший свободный блок / общая своб. память) → чем ближе к 1, тем меньше фрагментация
+        if len(free_blocks) == 1:
+            return 0
         fragmentation_ratio = 1 - (largest_free / total_free)
         return round(fragmentation_ratio * 100, 2)

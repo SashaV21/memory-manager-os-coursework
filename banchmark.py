@@ -10,12 +10,12 @@ def run_benchmark(name, strategy_class, iterations=100_000, memory_size=100_000)
 
     start = time.time()
     for i in range(iterations):
-        size = random.randint(1, 500)  # Случайный размер от 1 до 500 KB
+        size = random.randint(1, 500)
         pid, addr = manager.allocate_memory(size)
         if addr != -1:
             allocations.append(pid)
 
-        # Освобождаем старые блоки каждые 1000 итераций
+
         if i % 1000 == 0 and i > 0 and allocations:
             manager.free_memory(allocations.pop(0))
     end = time.time()
@@ -35,10 +35,10 @@ def run_benchmark(name, strategy_class, iterations=100_000, memory_size=100_000)
 def print_benchmark_results(results):
     print("\n📊 Результаты бенчмарка:")
     print("---------------------------------------------------------------")
-    print(f"{'Стратегия':<12} | {'Время (с)':<10} | {'Выделений':<10} | {'Фрагментация (%)':<16}")
+    print(f"{'Стратегия':<12} | {'Время (с)':<10} | {'Выделений':<10} ")
     print("---------------------------------------------------------------")
     for res in results:
-        print(f"{res['strategy']:<12} | {res['duration']:.4f}     | {res['success_allocations']:<10} | {res['fragmentation']:<16}")
+        print(f"{res['strategy']:<12} | {res['duration']:.4f}     | {res['success_allocations']:<10} ")
     print("---------------------------------------------------------------")
 
 

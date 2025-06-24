@@ -126,7 +126,7 @@ class MemoryManagerGUI:
         self.output_text.insert(tk.END, tabulate(table_data, headers=headers, tablefmt="grid"))
 
 
-# ===== Точка входа =====
+
 if __name__ == "__main__":
     root = tk.Tk()
     app = MemoryManagerGUI(root)
