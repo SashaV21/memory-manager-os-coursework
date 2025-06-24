@@ -51,19 +51,22 @@ def main():
         if option == '1':
             try:
                 size = int(input("Enter size to allocate (KB): "))
+                if size <= 0:
+                    print("Allocation size must be a positive number")
+                    continue
                 pid, addr = manager.allocate_memory(size)
                 if addr != -1:
-                    print(f"✅ Process {pid} allocated at address {addr}")
+                    print(f"Process {pid} allocated at address {addr}")
                 else:
-                    print("❌ Not enough memory.")
+                    print("Not enough memory.")
             except ValueError:
-                print("❗ Invalid input.")
+                print("Invalid input.")
 
         elif option == '2':
             try:
                 pid = int(input("Enter PID to free: "))
                 manager.free_memory(pid)
-                print(f"🔓 Freed memory for process {pid}")
+                print(f"Freed memory for process {pid}")
             except ValueError:
                 print("❗ Invalid input.")
 

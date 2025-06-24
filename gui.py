@@ -63,6 +63,9 @@ class MemoryManagerGUI:
     def start_simulation(self):
         try:
             size = int(self.size_entry.get())
+            if size <= 0:
+                messagebox.showerror("Error", "Memory size must be a positive number.")
+                return
             strategy_name = self.strategy_var.get()
             if strategy_name == "FirstFit":
                 strategy = FirstFitStrategy()
@@ -82,6 +85,9 @@ class MemoryManagerGUI:
             return
         try:
             size = int(self.alloc_entry.get())
+            if size <= 0:
+                messagebox.showerror("Error", "Allocation size must be a positive number.")
+                return
             pid, address = self.manager.allocate_memory(size)
             if address != -1:
                 self.print_memory_state()
